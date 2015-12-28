@@ -284,6 +284,9 @@ static int dev_acquisition_stop(struct sr_dev_inst *sdi, void *cb_data)
 {
 	struct dev_context *devc;
 
+        if (!sdi)
+                return SR_ERR_ARG;
+
 	/* Stop timer, if required. */
 	if (sdi && (devc = sdi->priv) && devc->limit_msec)
 		g_timer_stop(devc->elapsed_msec);

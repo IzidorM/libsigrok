@@ -577,7 +577,7 @@ SR_PRIV int sr_scpi_get_double(struct sr_scpi_dev_inst *scpi,
 SR_PRIV int sr_scpi_get_opc(struct sr_scpi_dev_inst *scpi)
 {
 	unsigned int i;
-	gboolean opc;
+	gboolean opc = FALSE;
 
 	for (i = 0; i < SCPI_READ_RETRIES; i++) {
 		sr_scpi_get_bool(scpi, SCPI_CMD_OPC, &opc);

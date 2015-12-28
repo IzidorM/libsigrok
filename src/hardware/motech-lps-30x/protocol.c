@@ -66,8 +66,11 @@ static void send_data(struct sr_dev_inst *sdi)
 static void process_line(struct sr_dev_inst *sdi)
 {
 	struct dev_context *devc;
-	double dbl;
-	int auxint;
+	double dbl = 0.0;
+	int auxint = 0;
+
+        if (!sdi) 
+                return;
 
 	devc = sdi->priv;
 
@@ -100,7 +103,7 @@ static void process_line(struct sr_dev_inst *sdi)
 
 		switch (devc->acq_req) {
 		case AQ_U1:
-			devc->channel_status[0].output_voltage_last = dbl;
+ 			devc->channel_status[0].output_voltage_last = dbl;
 			break;
 		case AQ_I1:
 			devc->channel_status[0].output_current_last = dbl;

@@ -129,7 +129,6 @@ static enum model scan_model_sm(struct sr_serial_dev_inst *serial)
 						((byte & MSGID_MASK) != MSGID_DATA))
 				{
 					model = METRAHIT_NONE;
-					bytecnt = 100;
 					break;
 				}
 			}
@@ -527,8 +526,11 @@ static int dev_acquisition_stop(struct sr_dev_inst *sdi, void *cb_data)
 {
 	struct dev_context *devc;
 
+        if (!sdi)
+                return SR_ERR_ARG;
+                
 	/* Stop timer, if required. */
-	if (sdi && (devc = sdi->priv) && devc->limit_msec)
+	if ((devc = sdi->priv) && devc->limit_msec)
 		g_timer_stop(devc->elapsed_msec);
 
 	return std_serial_dev_acquisition_stop(sdi, cb_data, dev_close,

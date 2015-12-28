@@ -21,7 +21,7 @@
 #include <math.h>
 #include "protocol.h"
 
-SR_PRIV unsigned int get_memory_size(int type)
+SR_PRIV unsigned int get_memory_size(unsigned int type)
 {
 	if (type == MEMORY_SIZE_8K)
 		return (8 * 1024);

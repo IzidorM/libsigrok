@@ -49,7 +49,7 @@ struct dev_context {
 	const struct zp_model *prof;
 };
 
-SR_PRIV unsigned int get_memory_size(int type);
+SR_PRIV unsigned int get_memory_size(unsigned int type);
 SR_PRIV int zp_set_samplerate(struct dev_context *devc, uint64_t samplerate);
 SR_PRIV int set_limit_samples(struct dev_context *devc, uint64_t samples);
 SR_PRIV int set_capture_ratio(struct dev_context *devc, uint64_t ratio);
